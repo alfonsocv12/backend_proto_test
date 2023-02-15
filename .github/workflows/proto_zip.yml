@@ -12,12 +12,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Zip data
-      run: zip -r proto.zip src -i \*.proto
+      run: zip -r ${{ github.event.repository.name }}.zip src -i \*.proto
       
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: proto.zip
+        files: ${{ github.event.repository.name }}.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
