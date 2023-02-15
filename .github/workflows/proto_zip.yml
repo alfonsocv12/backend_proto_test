@@ -1,0 +1,20 @@
+on:
+  release:
+    types:
+      - created
+    
+jobs:
+  proto-zip:
+    name: Zip protofiles
+    runs-on: ubuntu-latest
+    steps:
+    - name: Zip data
+      run: zip -r proto.zip src -i \*.proto
+      
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: proto.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
