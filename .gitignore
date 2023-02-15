@@ -1,0 +1,8 @@
+*.DS_Store
+.vscode/
+
+*.pyc
+
+pip_modules/
+
+*_pb2*
