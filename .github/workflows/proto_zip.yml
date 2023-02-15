@@ -1,13 +1,16 @@
+name: Create release
+
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      - created
     
 jobs:
   proto-zip:
     name: Zip protofiles
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Zip data
       run: zip -r proto.zip src -i \*.proto
       
