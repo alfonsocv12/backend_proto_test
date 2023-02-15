@@ -7,10 +7,12 @@ on:
     
 jobs:
   proto-zip:
-    name: Zip protofiles
+    permissions: write-all
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
+
     - name: Zip data
       run: zip -r ${{ github.event.repository.name }}.zip src -i \*.proto
       
