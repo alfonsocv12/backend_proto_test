@@ -31,11 +31,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: swift-actions/setup-swift@v1
-      id: cache-swift
-      uses: actions/cache@v1
-      with:
-        path: swift
-        key: ${{ runner.os }}-swift
     # - uses: wizhi/setup-buf@v1
     #   with:
     #     version: '0.36.0'
@@ -46,11 +41,6 @@ jobs:
         version: '3.x'
 
     - name: swiftprotobuf
-      id: cache-swift-protobuf
-      uses: actions/cache@v1
-      with:
-        path: swift-protobuf
-        key: ${{ runner.os }}-swift-protobuf
       run: |
         git clone https://github.com/apple/swift-protobuf.git
         cd swift-protobuf
