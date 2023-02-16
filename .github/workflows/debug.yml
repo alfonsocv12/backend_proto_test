@@ -16,7 +16,7 @@ jobs:
     - name: Install Protoc
       run: |
         wget https://github.com/protocolbuffers/protobuf/releases/download/v21.12/protoc-21.12-linux-x86_64.zip
-        uzip protoc-3.21.12-linux-x86_64.zip -d protoc
+        7zip x protoc-3.21.12-linux-x86_64.zip -oprotoc
         export PATH="$(pwd)/protoc/bin:$PATH"
 
     - name: TestProtoc
