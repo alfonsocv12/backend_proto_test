@@ -19,10 +19,14 @@ jobs:
         wget https://github.com/protocolbuffers/protobuf/releases/download/v21.12/protoc-21.12-linux-x86_64.zip
         unzip protoc-21.12-linux-x86_64.zip -d protoc
         export PATH="$(pwd)/protoc/bin:$PATH"
-
-    - name: TestProtoc
-      run: |
         mkdir swifttozip/
         protoc -I=. --python_out=swifttozip/ src/**/*.proto
         cd swifttozip
         ls -R
+
+#     - name: TestProtoc
+#       run: |
+#         mkdir swifttozip/
+#         protoc -I=. --python_out=swifttozip/ src/**/*.proto
+#         cd swifttozip
+#         ls -R
