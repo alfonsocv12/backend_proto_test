@@ -50,6 +50,7 @@ jobs:
         cd ../
         mkdir swifttozip/
         protoc -I=. --swift_out=swifttozip/ src/**/*.proto
+        ls -R
 
     - name: Zip data
       run: zip -r swift.zip swifttozip/src -i \*.swift
