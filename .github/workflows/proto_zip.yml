@@ -46,6 +46,7 @@ jobs:
         cd swift-protobuf
         git tag -l
         swift build -c release
+        echo "${HOME}/.bild/release/protoc-gen-swift" >> $GITHUB_PATH
         cd ../
         protoc -I=. --swift_out=swifttozip/ src/**/*.proto
 
