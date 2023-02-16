@@ -35,7 +35,9 @@ jobs:
         echo "\n"
         echo ${GITHUB_PATH}
         echo "\n"
-        echo "$(pwd)/.build/release" >> $GITHUB_PATH
+        echo ${HOME}
+        echo "\n"
+        export PATH="$(pwd)/.build/release:$PATH"
         echo ${PATH}
         echo "\n"
         echo ${GITHUB_PATH}
