@@ -1,9 +1,9 @@
-name: Debug
+# name: Debug
 
-on:
-  push:
-    to:
-    - main
+# on:
+#   push:
+#     to:
+#     - main
 
 jobs:
   debug:
@@ -23,10 +23,3 @@ jobs:
         protoc -I=. --python_out=swifttozip/ src/**/*.proto
         cd swifttozip
         ls -R
-
-#     - name: TestProtoc
-#       run: |
-#         mkdir swifttozip/
-#         protoc -I=. --python_out=swifttozip/ src/**/*.proto
-#         cd swifttozip
-#         ls -R
