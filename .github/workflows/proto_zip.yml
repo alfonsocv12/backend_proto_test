@@ -47,9 +47,7 @@ jobs:
         git tag -l
         swift build -c release
         cd ../
-
-    - name: compile
-      run: protoc -I=. --swift_out=swifttozip/ src/**/*.proto
+        protoc -I=. --swift_out=swifttozip/ src/**/*.proto
 
     - name: Zip data
       run: zip -r swift.zip swifttozip/src -i \*.swift
