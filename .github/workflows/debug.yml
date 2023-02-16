@@ -9,6 +9,7 @@ jobs:
   debug:
     permissions: write-all
     runs-on: ubuntu-latest
+    - uses: actions/checkout@v2
 
     steps:
     - name: Install Protoc
