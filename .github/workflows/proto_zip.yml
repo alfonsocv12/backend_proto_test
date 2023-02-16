@@ -31,28 +31,18 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: swift-actions/setup-swift@v1
-    # - uses: wizhi/setup-buf@v1
-    #   with:
-    #     version: '0.36.0'
-
-    - name: Install Protoc
-      uses: arduino/setup-protoc@v1
-      with:
-        version: '3.x'
-
     - name: swiftprotobuf
       run: |
+        wget https://github.com/protocolbuffers/protobuf/releases/download/v21.12/protoc-21.12-linux-x86_64.zip
+        unzip protoc-21.12-linux-x86_64.zip -d protoc
+        export PATH="$(pwd)/protoc/bin:$PATH"
         git clone https://github.com/apple/swift-protobuf.git
         cd swift-protobuf
         git checkout 1.20.3
         swift build -c release
         export PATH="$(pwd)/.build/release:$PATH"
         cd ../
-        mkdir swifttozip/
-        protoc -I=. --swift_out=swifttozip/ src/**/**/*.proto
-
-    - name: Zip data
-      run: zip -r swift.zip swifttozip/src -i \*.swift
+        make protoc-swift
     
     - name: Release
       uses: softprops/action-gh-release@v1
