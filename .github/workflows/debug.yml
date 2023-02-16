@@ -9,9 +9,10 @@ jobs:
   debug:
     permissions: write-all
     runs-on: ubuntu-latest
-    - uses: actions/checkout@v2
 
     steps:
+    - uses: actions/checkout@v2
+    
     - name: Install Protoc
       uses: arduino/setup-protoc@v1
       with:
