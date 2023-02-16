@@ -48,6 +48,7 @@ jobs:
         swift build -c release
         export PATH="$(pwd)/.build/release:$PATH"
         cd ../
+        mkdir swifttozip/
         protoc -I=. --swift_out=swifttozip/ src/**/*.proto
 
     - name: Zip data
