@@ -18,6 +18,7 @@ jobs:
 
     - name: TestProtoc
       run: |
+        ls -R
         mkdir swifttozip/
         ls
         protoc --python_out=swifttozip/ src/**/*.proto
