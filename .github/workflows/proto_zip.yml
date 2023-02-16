@@ -38,13 +38,12 @@ jobs:
     - name: Install Protoc
       uses: arduino/setup-protoc@v1
       with:
-        version: '3.21.12'
+        version: '3.x'
 
     - name: TestProtoc
       run: |
         mkdir swifttozip/
-        protoc --version
-        protoc -I=. --python_out=swifttozip/ src/**/*.proto
+        protoc --python_out=swifttozip/ src/**/*.proto
         cd swifttozip
         ls -R
 
