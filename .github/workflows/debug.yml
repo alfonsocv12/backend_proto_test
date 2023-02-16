@@ -1,0 +1,25 @@
+name: Debug
+
+on:
+  push:
+    to:
+    - main
+
+jobs:
+  debug:
+    permissions: write-all
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install Protoc
+      uses: arduino/setup-protoc@v1
+      with:
+        version: '3.x'
+
+    - name: TestProtoc
+      run: |
+        mkdir swifttozip/
+        ls
+        protoc --python_out=swifttozip/ src/**/*.proto
+        cd swifttozip
+        ls -R
