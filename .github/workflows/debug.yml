@@ -12,11 +12,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: montudor/action-zip@v1
     
     - name: Install Protoc
       run: |
         wget https://github.com/protocolbuffers/protobuf/releases/download/v21.12/protoc-21.12-linux-x86_64.zip
-        7zip x protoc-3.21.12-linux-x86_64.zip -oprotoc
+        unzip protoc-3.21.12-linux-x86_64.zip -d protoc
         export PATH="$(pwd)/protoc/bin:$PATH"
 
     - name: TestProtoc
