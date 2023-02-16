@@ -27,31 +27,28 @@ jobs:
   proto-zip-swift:
     permissions: write-all
     runs-on: ubuntu-latest
-    container: alebatt/protoc-gen-swift
 
     steps:
     - uses: actions/checkout@v2
-#     - uses: swift-actions/setup-swift@v1
+    - uses: swift-actions/setup-swift@v1
     - uses: wizhi/setup-buf@v1
       with:
         version: '0.36.0'
 
-#     - name: Install Protoc
-#       uses: arduino/setup-protoc@v1
-#       with:
-#         version: '3.x'
+    - name: Install Protoc
+      uses: arduino/setup-protoc@v1
+      with:
+        version: '3.x'
 
-    - name: compile
-      run: protoc -I=. --swift_out=swifttozip/ src/**/*.proto
-
-#     - name: swiftprotobuf
-#       run: |
-#         git clone https://github.com/apple/swift-protobuf.git
-#         cd swift-protobuf
-#         git tag -l
-#         swift build -c release
-#         echo "${HOME}/.build/release/protoc-gen-swift" >> $GITHUB_PATH
-#         cd ../
+    - name: swiftprotobuf
+      run: |
+        git clone https://github.com/apple/swift-protobuf.git
+        cd swift-protobuf
+        git tag -l
+        swift build -c release
+        echo "${HOME}/.build/release" >> $GITHUB_PATH
+        cd ../
+        protoc -I=. --swift_out=swifttozip/ src/**/*.proto
 
     - name: Zip data
       run: zip -r swift.zip swifttozip/src -i \*.swift
