@@ -1,10 +1,13 @@
 syntax = "proto3";
 package src.domain.player;
 
+import "google/protobuf/timestamp.proto";
+
 message PlayerEntity {
     string id = 1;
     string name = 2;
     float height = 3;
     int32 age = 4;
     string country_id = 5;
+    google.protobuf.Timestamp created_at = 6;
 }
